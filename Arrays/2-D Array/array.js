@@ -8,4 +8,9 @@ for(let i=0;i<rows;i++){
     }
 }
 
-console.log(matrice[1][1])
+console.log(matrice)
+
+
+//Second way of creating 2-d array
+
+let array1=[[],[],[],[],[]];
