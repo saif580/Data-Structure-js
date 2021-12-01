@@ -90,6 +90,16 @@ class LinkedList {
     }
   }
 
+  reverse(){
+    let reverseArr=this.print().reverse()
+    let node=new LinkedList(reverseArr[0])
+    for(let i=1;i<reverseArr.length;i++){
+        // console.log(reverseArr[i])
+        node.appendAtEnd(reverseArr[i])
+    }
+    return node
+  }
+
   iterateInLinkList (pos) {
     let current = this.head
     for (let i = 0; i < pos; i++) {
@@ -105,7 +115,7 @@ class LinkedList {
       arr.push(current.value)
       current = current.next
     }
-    return console.log(arr)
+    return arr
   }
 }
 
@@ -115,9 +125,11 @@ Node.appendAtEnd(30)
 Node.appendAtEnd(40)
 Node.appendAtEnd(50)
 Node.appendAtStart(0)
-// Node.removeFromStart()
-// Node.removeFromEnd()
+Node.appendAtStart(-10)
+Node.removeFromStart()
+Node.removeFromEnd()
 Node.appendAtGivenPosition(3, 25)
 Node.removeFromGivenPosition(3)
-Node.print()
+console.log(Node.print())
 console.log(Node)
+console.log(Node.reverse())
