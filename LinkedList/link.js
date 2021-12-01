@@ -52,6 +52,34 @@ class LinkedList {
     this.length -= 1
   }
 
+  appendAtGivenPosition(pos,value){
+    const newNode={
+        value:value,
+        next:null
+    }
+    if(this.head.value===undefined){
+        this.head=newNode
+        this.tail=this.head
+        this.length+=1
+    } else  if(pos>=this.length){
+        this.appendAtEnd(value)
+    } else {
+        let preValue=this.iterateInLinkList(pos-1)
+        let currValue=this.iterateInLinkList(pos)
+        preValue.next=newNode
+        newNode.next=currValue
+        this.length+=1
+    }
+  }
+
+  iterateInLinkList(pos){
+      let current=this.head;
+      for(let i=0;i<pos;i++){
+        current=current.next
+      }
+      return current
+  }
+
   print () {
     let arr = []
     let current = this.head
@@ -69,7 +97,8 @@ Node.appendAtEnd(30)
 Node.appendAtEnd(40)
 Node.appendAtEnd(50)
 Node.appendAtStart(0)
-Node.removeFromStart()
-Node.removeFromEnd()
+// Node.removeFromStart()
+// Node.removeFromEnd()
+Node.appendAtGivenPosition(3,25)
 Node.print()
 console.log(Node)
