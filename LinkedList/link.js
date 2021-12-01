@@ -52,32 +52,50 @@ class LinkedList {
     this.length -= 1
   }
 
-  appendAtGivenPosition(pos,value){
-    const newNode={
-        value:value,
-        next:null
+  appendAtGivenPosition (pos, value) {
+    const newNode = {
+      value: value,
+      next: null
     }
-    if(this.head.value===undefined){
-        this.head=newNode
-        this.tail=this.head
-        this.length+=1
-    } else  if(pos>=this.length){
-        this.appendAtEnd(value)
+    if (this.head.value === undefined) {
+      this.head = newNode
+      this.tail = this.head
+      this.length += 1
+    } else if (pos >= this.length) {
+      this.appendAtEnd(value)
     } else {
-        let preValue=this.iterateInLinkList(pos-1)
-        let currValue=this.iterateInLinkList(pos)
-        preValue.next=newNode
-        newNode.next=currValue
-        this.length+=1
+      let preValue = this.iterateInLinkList(pos - 1)
+      let currValue = this.iterateInLinkList(pos)
+      preValue.next = newNode
+      newNode.next = currValue
+      this.length += 1
     }
   }
 
-  iterateInLinkList(pos){
-      let current=this.head;
-      for(let i=0;i<pos;i++){
-        current=current.next
-      }
-      return current
+  removeFromGivenPosition (pos) {
+    if (this.length === 0) {
+      return console.log('No Node present')
+    } else if (this.length === 1) {
+      this.head.value = undefined
+      this.head.next = null
+    } else if (pos === 0) {
+      this.removeFromStart()
+    } else if (pos >= this.length) {
+      this.removeFromEnd()
+    } else {
+        let preValue=this.iterateInLinkList(pos-1)
+        let fowValue=this.iterateInLinkList(pos+1)
+        preValue.next=fowValue;
+        this.length-=1
+    }
+  }
+
+  iterateInLinkList (pos) {
+    let current = this.head
+    for (let i = 0; i < pos; i++) {
+      current = current.next
+    }
+    return current
   }
 
   print () {
@@ -99,6 +117,7 @@ Node.appendAtEnd(50)
 Node.appendAtStart(0)
 // Node.removeFromStart()
 // Node.removeFromEnd()
-Node.appendAtGivenPosition(3,25)
+Node.appendAtGivenPosition(3, 25)
+Node.removeFromGivenPosition(3)
 Node.print()
 console.log(Node)
