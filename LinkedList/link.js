@@ -18,6 +18,16 @@ class LinkedList {
         this.length+=1;
     }
 
+    appendAtStart(value){
+        const newNode={
+            value:value,
+            next:null
+        }
+        newNode.next=this.head
+        this.head=newNode
+        this.length+=1
+    }
+
     print(){
         let arr=[]
         let current=this.head;
@@ -32,5 +42,6 @@ class LinkedList {
 const Node=new LinkedList(10)
 Node.appendAtEnd(20)
 Node.appendAtEnd(30)
+Node.appendAtStart(0)
 Node.print()
 console.log(Node)
