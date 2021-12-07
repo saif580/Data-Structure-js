@@ -94,7 +94,6 @@ class LinkedList {
     let reverseArr=this.print().reverse()
     let node=new LinkedList(reverseArr[0])
     for(let i=1;i<reverseArr.length;i++){
-        // console.log(reverseArr[i])
         node.appendAtEnd(reverseArr[i])
     }
     return node
